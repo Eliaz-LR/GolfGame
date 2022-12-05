@@ -8,29 +8,33 @@ public class DragAndShoot : MonoBehaviour
     public Rigidbody rb;
     public LineRenderer lineRenderer; 
 
-    private Camera cam;
+    private Camera mainCamera;
     private Vector3 startPos;
     private Vector3 endPos;
 
     private void Start()
     {
-        cam = Camera.main;
+        mainCamera = Camera.main;
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            startPos = Input.mousePosition;
-            startPos.z = startPos.y;
-            startPos.y = 0;
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                startPos = hit.point;
+            }
             Debug.Log("Start Pos: " + startPos);
         }
         if (Input.GetMouseButton(0))
         {
-            endPos = Input.mousePosition;
-            endPos.z = endPos.y;
-            endPos.y = 0;
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                endPos = hit.point;
+            }
             // Debug.Log("End Pos: " + endPos);
 
             DrawLine(startPos - endPos);
