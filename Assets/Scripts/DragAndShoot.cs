@@ -7,6 +7,7 @@ public class DragAndShoot : MonoBehaviour
     public float power = 10f;
     public Rigidbody rb;
     public LineRenderer lineRenderer; 
+    public bool mouseOnBall=false;
 
     private Camera mainCamera;
     private Vector3 startPos= Vector3.zero;
@@ -26,8 +27,9 @@ public class DragAndShoot : MonoBehaviour
             {
                 if (hit.collider.gameObject.name == "Ball")
                 {
-                startPos = hit.point;
-                Debug.Log("Start Pos: " + startPos);   
+                    mouseOnBall=true;
+                    startPos = hit.point;
+                    Debug.Log("Start Pos: " + startPos);   
                 }
             }
         }
@@ -44,6 +46,7 @@ public class DragAndShoot : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            mouseOnBall=false;
             lineRenderer.enabled = false;
             startPos = Vector3.zero;
             endPos = Vector3.zero;
