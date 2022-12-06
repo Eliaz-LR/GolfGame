@@ -28,8 +28,7 @@ public class DragAndShoot : MonoBehaviour
                 if (hit.collider.gameObject.name == "Ball")
                 {
                     mouseOnBall=true;
-                    startPos = hit.point;
-                    Debug.Log("Start Pos: " + startPos);   
+                    startPos = transform.position;
                 }
             }
         }
@@ -38,6 +37,7 @@ public class DragAndShoot : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                startPos = transform.position;
                 endPos = hit.point;
             }
             // Debug.Log("End Pos: " + endPos);
@@ -46,6 +46,7 @@ public class DragAndShoot : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            Shoot(startPos - endPos);
             mouseOnBall=false;
             lineRenderer.enabled = false;
             startPos = Vector3.zero;
@@ -60,5 +61,9 @@ public class DragAndShoot : MonoBehaviour
         };
         lineRenderer.SetPositions(positions);
         lineRenderer.enabled = true;
+    }
+
+    private void Shoot(Vector3 direction) {
+        rb.AddForce(direction * power, ForceMode.Impulse);
     }
 }
