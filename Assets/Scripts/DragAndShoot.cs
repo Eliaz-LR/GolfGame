@@ -12,6 +12,7 @@ public class DragAndShoot : MonoBehaviour
     private Camera mainCamera;
     private Vector3 startPos= Vector3.zero;
     private Vector3 endPos= Vector3.zero;
+    private Vector3 direction = Vector3.zero;
 
     private void Start()
     {
@@ -39,25 +40,33 @@ public class DragAndShoot : MonoBehaviour
             {
                 startPos = transform.position;
                 endPos = hit.point;
+                direction = startPos - endPos;
+                direction.y = 0;
+                if (direction.magnitude > 10)
+                {
+                    direction = direction.normalized*10;
+                }
             }
             // Debug.Log("End Pos: " + endPos);
 
-            DrawLine(startPos - endPos);
+            DrawLine(direction);
         }
         if (Input.GetMouseButtonUp(0))
         {
-            Shoot(startPos - endPos);
+            if (direction.magnitude > 0.5)
+            {
+                Shoot(direction);
+            }
             mouseOnBall=false;
             lineRenderer.enabled = false;
-            startPos = Vector3.zero;
-            endPos = Vector3.zero;
+            startPos = endPos = direction = Vector3.zero;
         }
     }
 
     private void DrawLine(Vector3 direction) {
         Vector3[] positions = {
-            transform.position,
-            direction
+            transform.position - direction,
+            transform.position
         };
         lineRenderer.SetPositions(positions);
         lineRenderer.enabled = true;
