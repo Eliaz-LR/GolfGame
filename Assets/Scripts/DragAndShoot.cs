@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class DragAndShoot : MonoBehaviour
 {
-    public float power = 10f;
+    [SerializeField] private float power = 10f;
+    [SerializeField] private float maxMagnitude = 10f;
+    [SerializeField] private float minMagnitude = 0.5f;
+
     public Rigidbody rb;
     public LineRenderer lineRenderer; 
     public bool mouseOnBall=false;
@@ -42,9 +45,9 @@ public class DragAndShoot : MonoBehaviour
                 endPos = hit.point;
                 direction = startPos - endPos;
                 direction.y = 0;
-                if (direction.magnitude > 10)
+                if (direction.magnitude > maxMagnitude)
                 {
-                    direction = direction.normalized*10;
+                    direction = direction.normalized*maxMagnitude;
                 }
             }
             // Debug.Log("End Pos: " + endPos);
@@ -53,7 +56,7 @@ public class DragAndShoot : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            if (direction.magnitude > 0.5)
+            if (direction.magnitude > minMagnitude)
             {
                 Shoot(direction);
             }

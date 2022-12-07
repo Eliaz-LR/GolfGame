@@ -748,7 +748,7 @@ MonoBehaviour:
   m_SplineCurvature: 0.2
   m_Orbits:
   - m_Height: 8
-    m_Radius: 11
+    m_Radius: 14
   - m_Height: 3
     m_Radius: 15
   - m_Height: 0.4
@@ -1403,6 +1403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 10
+  maxMagnitude: 9
+  minMagnitude: 0.5
   rb: {fileID: 1669658989}
   lineRenderer: {fileID: 815267408}
   mouseOnBall: 0
@@ -1475,7 +1477,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834394209}
-  m_LocalRotation: {x: 0.098537646, y: -0.00000003057002, z: 0.0000000030270295, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853762, y: 7.352745e-15, z: -6.667229e-16, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
