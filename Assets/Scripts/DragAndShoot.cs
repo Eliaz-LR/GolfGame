@@ -77,5 +77,6 @@ public class DragAndShoot : MonoBehaviour
 
     private void Shoot(Vector3 direction) {
         rb.AddForce(direction * power, ForceMode.Impulse);
+        GameManager.instance.addStrike();
     }
 }
