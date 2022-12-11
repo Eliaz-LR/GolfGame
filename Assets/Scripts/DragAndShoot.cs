@@ -29,7 +29,7 @@ public class DragAndShoot : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit)) //if ray hits something
             {
-                if (hit.collider.gameObject.name == "Ball")
+                if (hit.collider.gameObject.name == "Golfball")
                 {
                     mouseOnBall=true;
                     startPos = transform.position;
