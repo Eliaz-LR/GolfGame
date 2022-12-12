@@ -10,6 +10,7 @@ public class DragAndShoot : MonoBehaviour
 
     public Rigidbody rb;
     public LineRenderer lineRenderer; 
+    public Collider planeCollider;
     public bool mouseOnBall=false;
 
     private Camera mainCamera;
@@ -39,7 +40,7 @@ public class DragAndShoot : MonoBehaviour
         if (Input.GetMouseButton(0) && startPos != Vector3.zero)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (planeCollider.Raycast(ray, out RaycastHit hit,100f))
             {
                 startPos = transform.position;
                 endPos = hit.point;
