@@ -12,6 +12,7 @@ public class DragAndShoot : MonoBehaviour
     public LineRenderer lineRenderer; 
     public Collider planeCollider;
     public bool mouseOnBall=false;
+    public Vector3 lastPos;
 
     private Camera mainCamera;
     private Vector3 startPos= Vector3.zero;
@@ -77,6 +78,7 @@ public class DragAndShoot : MonoBehaviour
     }
 
     private void Shoot(Vector3 direction) {
+        lastPos = transform.position;
         rb.AddForce(direction * power, ForceMode.Impulse);
         GameManager.instance.addStrike();
     }
