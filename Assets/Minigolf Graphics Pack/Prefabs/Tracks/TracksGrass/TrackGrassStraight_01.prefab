@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3335826}
   - component: {fileID: 2301366}
   - component: {fileID: 6467318}
+  - component: {fileID: 7803631544307865761}
   m_Layer: 0
   m_Name: TrackGrassStraight_01
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -89,10 +92,24 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110470}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 743868e83240ffc49ae4d27e12ec0a0e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 44fa26641cc3df847ad77e239d1f30da, type: 3}
+  m_Mesh: {fileID: 3186386897507985825, guid: 15c7c104f25d30545b8cdf5af71f52b1, type: 3}
+--- !u!64 &7803631544307865761
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110470}
+  m_Material: {fileID: 13400000, guid: ed3947355d2245847b34a1b4f164801f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7814876382829793634, guid: 7d443009b0218384db8e1ac27133d9e6, type: 3}
