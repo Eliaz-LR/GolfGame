@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject strikes;
 
-    public static int[] par = new int[] {2,3};
+    public static int[] par = new int[] {2,2,4,3};
     public Vector3[] ballPos;
     public int[] score;
     public int hole = 0;
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         strikes.GetComponent<TextMeshProUGUI>().text = nbStrikes.ToString();
         ballPos = new Vector3[]{
             new Vector3(0,1f,-0.5f),
+            new Vector3(-25f,1f,3.5f),
+            new Vector3(-42f,1f,3.5f),
             new Vector3(23.26f,1f,-5.67f)
         };
         score = new int[par.Length];
