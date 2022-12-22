@@ -30,7 +30,9 @@ public class GameManager : MonoBehaviour
             new Vector3(-65f,1f,3.5f),
             new Vector3(-82f,1f,3.5f),
             new Vector3(-100f,1f,3.5f),
-            new Vector3(23.26f,1f,-5.67f),
+            new Vector3(23f,2f,-5f),
+            new Vector3(-140f,3f,3.5f),
+            new Vector3(-120f,1f,3.5f),
         };
         score = new int[par.Length];
     }
