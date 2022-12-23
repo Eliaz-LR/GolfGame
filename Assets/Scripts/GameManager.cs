@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject strikes;
 
-    public static int[] par = new int[] {2,2,4,3,5,6,5,3,4};
+    public static int[] par = new int[] {2,2,4,3,5,6,5,3,4,10};
     public Vector3[] ballPos;
     public int[] score;
     public int hole = 0;
@@ -24,15 +24,19 @@ public class GameManager : MonoBehaviour
     private void Start(){
         strikes.GetComponent<TextMeshProUGUI>().text = nbStrikes.ToString();
         ballPos = new Vector3[]{
+            //First nine trou - grass theme
             new Vector3(0,1f,-0.5f),
-            new Vector3(-25f,1f,3.5f),
-            new Vector3(-42f,1f,3.5f),
-            new Vector3(-65f,1f,3.5f),
-            new Vector3(-82f,1f,3.5f),
-            new Vector3(-100f,1f,3.5f),
-            new Vector3(23f,2f,-5f),
-            new Vector3(-140f,3f,3.5f),
-            new Vector3(-120f,1f,3.5f),
+            //new Vector3(-25f,1f,3.5f),
+            //new Vector3(-42f,1f,3.5f),
+            //new Vector3(-65f,1f,3.5f),
+            //new Vector3(-82f,1f,3.5f),
+            //new Vector3(-100f,1f,3.5f),
+            //new Vector3(23f,2f,-5f),
+            //new Vector3(-140f,3f,3.5f),
+            //new Vector3(-120f,1f,3.5f),
+
+            //Second nine trou -
+            new Vector3(32f,1f,50.5f),
         };
         score = new int[par.Length];
     }
