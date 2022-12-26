@@ -7,6 +7,7 @@ public class DragAndShoot : MonoBehaviour
     [SerializeField] private float power = 10f;
     [SerializeField] private float maxMagnitude = 10f;
     [SerializeField] private float minMagnitude = 0.5f;
+    [SerializeField] private float speedCamera = 10f;
 
     public Rigidbody rb;
     public LineRenderer lineRenderer; 
@@ -19,9 +20,14 @@ public class DragAndShoot : MonoBehaviour
     private Vector3 endPos= Vector3.zero;
     private Vector3 direction = Vector3.zero;
 
+    // freelook camera
+    [SerializeField] GameObject freeLookCamera;
+    private Cinemachine.CinemachineFreeLook freeLookComponent;
+
     private void Start()
     {
         mainCamera = Camera.main;
+        freeLookComponent = freeLookCamera.GetComponent<Cinemachine.CinemachineFreeLook>();
     }
 
     private void Update()
@@ -54,7 +60,12 @@ public class DragAndShoot : MonoBehaviour
             }
             // Debug.Log("End Pos: " + endPos);
 
-            DrawLine(direction);
+            if (direction.magnitude > minMagnitude)
+            {
+                DrawLine(direction);
+                SetCameraAngle(direction);
+            }
+
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -75,6 +86,19 @@ public class DragAndShoot : MonoBehaviour
         };
         lineRenderer.SetPositions(positions);
         lineRenderer.enabled = true;
+    }
+
+    private void SetCameraAngle(Vector3 direction) {
+        Quaternion rotationCamera = mainCamera.transform.rotation;
+        Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+        float angle = AngleDifference(rotationCamera.eulerAngles.y, rotation.eulerAngles.y);
+        freeLookComponent.m_XAxis.Value = (angle*speedCamera)/360f;
+    }
+
+    float AngleDifference( float angle1, float angle2 )
+    {
+        float diff = ( angle2 - angle1 + 180 ) % 360 - 180;
+        return diff < -180 ? diff + 360 : diff;
     }
 
     private void Shoot(Vector3 direction) {
