@@ -12,7 +12,7 @@ public class OnFlagCollision : MonoBehaviour
     {
         gameManager = GameManager.instance;
         golfball = GameObject.Find("Golfball");
-        FinishedScreen = GameObject.Find("Finished Screen");
+        FinishedScreen = FindObject(GameObject.Find("Canvas"), "Finished Screen");
     }
 
     private bool isLastHole()
@@ -48,6 +48,17 @@ public class OnFlagCollision : MonoBehaviour
         FinishedScreen.SetActive(true);
         Time.timeScale = 0f; // Pause the game
         ScoreManager.instance.SaveScore(gameManager.score);
+    }
+
+    GameObject FindObject(GameObject parent, string name)
+    {
+        Transform[] trs= parent.GetComponentsInChildren<Transform>(true);
+        foreach(Transform t in trs){
+            if(t.gameObject.name == name){
+                return t.gameObject;
+            }
+        }
+        return null;
     }
 
 }
