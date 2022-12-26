@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proyecto26;
 
 public class ScoreManager
 {
@@ -10,13 +11,29 @@ public class ScoreManager
         instance = this;
     }
 
-    public void SaveScore(int[] score)
+    public void SaveScore(Score score)
     {
-        int totalScore = 0;
-        for (int i = 0; i < score.Length; i++)
-        {
-            totalScore += score[i];
-        }
-        Debug.Log("Total score: " + totalScore);
+
+        Debug.Log("Total score: " + score.totalScore);
+
     }
+    // private void PushToDatabase()
+    // {
+    //     RestClient.Put("https://demineur-3d-default-rtdb.europe-west1.firebasedatabase.app/"+DifficultyGrid.difficulty+"/"+pseudoField.text+".json",score);
+    // }
+    // private void CompareWithDatabase(Score score)
+    // {
+    //     RestClient.Get<Score>("https://demineur-3d-default-rtdb.europe-west1.firebasedatabase.app/"+DifficultyGrid.difficulty+"/"+pseudoField.text+".json").Then(response =>
+    //     {
+    //         if (score.time<response.time)
+    //         {
+    //             Debug.Log("score pushed");
+    //             PushToDatabase(score);
+    //         }
+    //         return;
+    //     }).Catch(err=>{
+    //         Debug.Log("score pushed err");
+    //         PushToDatabase(score);
+    //     });
+    // }
 }
