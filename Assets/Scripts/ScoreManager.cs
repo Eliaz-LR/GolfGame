@@ -15,12 +15,12 @@ public class ScoreManager
     {
 
         Debug.Log("Total score: " + score.totalScore);
-
+        PushToDatabase(score);
     }
-    // private void PushToDatabase()
-    // {
-    //     RestClient.Put("https://demineur-3d-default-rtdb.europe-west1.firebasedatabase.app/"+DifficultyGrid.difficulty+"/"+pseudoField.text+".json",score);
-    // }
+    private void PushToDatabase(Score score)
+    {
+        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/"+score.level+"/"+score.pseudo+".json", score);
+    }
     // private void CompareWithDatabase(Score score)
     // {
     //     RestClient.Get<Score>("https://demineur-3d-default-rtdb.europe-west1.firebasedatabase.app/"+DifficultyGrid.difficulty+"/"+pseudoField.text+".json").Then(response =>
@@ -36,4 +36,5 @@ public class ScoreManager
     //         PushToDatabase(score);
     //     });
     // }
+
 }
