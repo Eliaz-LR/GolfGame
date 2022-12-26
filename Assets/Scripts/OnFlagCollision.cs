@@ -4,26 +4,50 @@ using UnityEngine;
 
 public class OnFlagCollision : MonoBehaviour
 {
-    [SerializeField] private GameObject golfball;
+    private GameObject golfball;
+    private GameObject FinishedScreen;
     private GameManager gameManager;
 
     private void Start()
     {
-        gameManager = GameManager.instance;   
+        gameManager = GameManager.instance;
+        golfball = GameObject.Find("Golfball");
+        FinishedScreen = GameObject.Find("Finished Screen");
     }
 
-    void OnCollisionEnter(Collision collision)
+    private bool isLastHole()
+    {
+        return gameManager.hole == GameManager.par.Length - 1;
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == golfball.name)
         {
-            Debug.Log("Golfball finished !");
+            Debug.Log("Golfball finished !"); // TODO: Add a flag animation
             gameManager.resetStrike();
-            gameManager.hole++;
-            golfball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            golfball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            golfball.transform.rotation = Quaternion.identity;
-            Debug.Log(gameManager.ballPos[0]);
-            golfball.transform.position = gameManager.ballPos[gameManager.hole];
+            if (isLastHole())
+            {
+                Debug.Log("Game finished !");
+                Finished();
+            }
+            else
+            {
+                gameManager.hole++;
+                golfball.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                golfball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                golfball.transform.rotation = Quaternion.identity;
+                golfball.transform.position = gameManager.ballPos[gameManager.hole];
+            }
+
         }
     }
+
+    private void Finished()
+    {
+        FinishedScreen.SetActive(true);
+        Time.timeScale = 0f; // Pause the game
+        ScoreManager.instance.SaveScore(gameManager.score);
+    }
+
 }
