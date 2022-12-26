@@ -29,7 +29,8 @@ public class OnFlagCollision : MonoBehaviour
             if (isLastHole())
             {
                 Debug.Log("Game finished !");
-                Finished();
+                FinishedScreen.SetActive(true);
+                FinishedScreen.GetComponent<Finished>().WhenFinished();
             }
             else
             {
@@ -41,13 +42,6 @@ public class OnFlagCollision : MonoBehaviour
             }
 
         }
-    }
-
-    private void Finished()
-    {
-        FinishedScreen.SetActive(true);
-        Time.timeScale = 0f; // Pause the game
-        ScoreManager.instance.SaveScore(gameManager.score);
     }
 
     GameObject FindObject(GameObject parent, string name)
