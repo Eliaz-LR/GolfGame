@@ -2494,9 +2494,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 406662369}
+  - component: {fileID: 406662370}
   - component: {fileID: 406662368}
+  - component: {fileID: 406662371}
   m_Layer: 0
-  m_Name: SkinChanger
+  m_Name: Manager / Script Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2523,13 +2525,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406662367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1016.12354, y: 526.38605, z: 5.470413}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &406662370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406662367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193e8afb59dc64e4c9f68c04004e7561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strikes: {fileID: 568403966}
+  ballPos: []
+  score: 
+  hole: 0
+--- !u!114 &406662371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406662367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5625885e9924b04a90cf862823fb854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &409075273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4780,7 +4810,6 @@ GameObject:
   - component: {fileID: 944568670}
   - component: {fileID: 944568669}
   - component: {fileID: 944568668}
-  - component: {fileID: 944568672}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4871,23 +4900,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &944568672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944568667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 193e8afb59dc64e4c9f68c04004e7561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strikes: {fileID: 568403966}
-  ballPos:
-  - {x: 0, y: 0, z: 0}
-  score: 00000000
-  hole: 0
 --- !u!1 &955011224 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 117518, guid: d645ce5fe35ad204d99fa4c05dc3a388, type: 3}
@@ -10287,7 +10299,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834394209}
-  m_LocalRotation: {x: 0.22975291, y: 0.000000016746096, z: -0.0000000039532173, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.000000016746089, z: 0.0000000039532155, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

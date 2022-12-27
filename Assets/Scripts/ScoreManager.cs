@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Proyecto26;
 
-public class ScoreManager
+public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
@@ -13,13 +13,12 @@ public class ScoreManager
 
     public void SaveScore(Score score)
     {
-
-        Debug.Log("Total score: " + score.totalScore);
+        Debug.Log(score.pseudo+" "+score.level+" "+score.totalScore);
         PushToDatabase(score);
     }
     private void PushToDatabase(Score score)
     {
-        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/"+score.level+"/"+score.pseudo+".json", score);
+        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/"+score.level+"/"+score.pseudo+".json", score.totalScore);
     }
     // private void CompareWithDatabase(Score score)
     // {
