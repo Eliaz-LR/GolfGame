@@ -8,6 +8,8 @@ public class SkinChanger : MonoBehaviour
 
     private void Start(){
 
-        ballMesh.GetComponent<MeshFilter>().mesh = StateNameController.skin;
+        if(StateNameController.skin != null){
+            ballMesh.GetComponent<MeshFilter>().mesh = StateNameController.skin;
+        }
     }
 }
