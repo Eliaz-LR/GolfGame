@@ -8,16 +8,23 @@ public class MainMenu : MonoBehaviour
 {
 
     
-    public GameObject LevelNumber;
-
-    public void PlayLevel(int level){
-
-        //levelNumber = LevelNumber.GetComponent<TextMeshProUGUI>().text;
-        //Debug.Log(levelNumber);
-        SceneManager.LoadScene(level);
+    public void changeSkin(Mesh mesh){
+        StateNameController.skin = mesh;
     }
 
-    public void QuitGame(){
+    public void defaultSkin(Mesh mesh){
+        if(StateNameController.skin == null){
+            StateNameController.skin = mesh;
+        }
+    }
+
+    public void PlayLevel(int level)
+    {  
+        SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
         Debug.Log("Le jeu s'est arrêté");
         Application.Quit();
     }
