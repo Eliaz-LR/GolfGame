@@ -92,7 +92,10 @@ public class DragAndShoot : MonoBehaviour
         Quaternion rotationCamera = mainCamera.transform.rotation;
         Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
         float angle = AngleDifference(rotationCamera.eulerAngles.y, rotation.eulerAngles.y);
-        freeLookComponent.m_XAxis.Value = (angle*speedCamera)/360f;
+        if (!(angle < 5 && angle > -5))
+        {
+            freeLookComponent.m_XAxis.Value = (angle*speedCamera)/360f;
+        }
     }
 
     float AngleDifference( float angle1, float angle2 )

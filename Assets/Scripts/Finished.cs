@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
 
 public class Finished : MonoBehaviour
 {
@@ -14,14 +14,20 @@ public class Finished : MonoBehaviour
     public void WhenFinished()
     {
         Time.timeScale = 0f; // Pause the game
+        menuButton.onClick.AddListener(ReturnToMenu);
+        pseudoField.onSubmit.AddListener(ReturnToMenuCopy);
     }
 
-    private void ReturnToMenu(string optional = null)
+    private void ReturnToMenu()
     {
         if (pseudoField.text!="")
         {
             SaveScore();
         }
+    }
+    private void ReturnToMenuCopy(string osef)
+    {
+        ReturnToMenu();
     }
 
     private void SaveScore()
