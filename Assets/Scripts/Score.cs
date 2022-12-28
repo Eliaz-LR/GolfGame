@@ -1,9 +1,10 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class Score
 {
-    public int totalScore; //time in seconds
+    public int totalScore;
     public string pseudo;
     public string level;
     public Score(int[] score, string pseudo, string level)

@@ -25,16 +25,15 @@ public class OnFlagCollision : MonoBehaviour
         if (collision.gameObject.name == golfball.name)
         {
             Debug.Log("Golfball finished !"); // TODO: Add a flag animation
-            gameManager.resetStrike();
             if (isLastHole())
             {
-                Debug.Log("Game finished !");
                 FinishedScreen.SetActive(true);
                 FinishedScreen.GetComponent<Finished>().WhenFinished();
             }
             else
             {
                 gameManager.hole++;
+                gameManager.resetStrike();
                 golfball.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 golfball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 golfball.transform.rotation = Quaternion.identity;

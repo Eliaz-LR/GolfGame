@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject strikes;
 
     public static int[] par = new int[] {2,2,4,3,5,6,5,3,4};
+    // public static int[] par = new int[] {2};
     public Vector3[] ballPos;
     public int[] score;
     public int hole = 0;

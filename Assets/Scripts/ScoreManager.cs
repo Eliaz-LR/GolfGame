@@ -18,7 +18,12 @@ public class ScoreManager : MonoBehaviour
     }
     private void PushToDatabase(Score score)
     {
-        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/"+score.level+"/"+score.pseudo+".json", score.totalScore);
+        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+score.level+"/"+score.pseudo+".json", score)
+        .Then(response =>
+        {
+            Debug.Log("score pushed");
+        })
+        .Catch(err=>{Debug.Log("score pushed err"+err.Message);});
     }
     // private void CompareWithDatabase(Score score)
     // {
