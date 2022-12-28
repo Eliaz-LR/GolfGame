@@ -52,4 +52,9 @@ public class GameManager : MonoBehaviour
         score[hole] = nbStrikes;
         strikes.GetComponent<TextMeshProUGUI>().text = nbStrikes.ToString();
     }
+
+    public void ReturnToMenu(){
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 }

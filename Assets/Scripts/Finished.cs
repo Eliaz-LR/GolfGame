@@ -24,6 +24,7 @@ public class Finished : MonoBehaviour
         {
             SaveScore();
         }
+        GameManager.instance.ReturnToMenu();
     }
     private void ReturnToMenuCopy(string osef)
     {
