@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
     public void SaveScore(Score score)
     {
         Debug.Log(score.pseudo+" "+score.level+" "+score.totalScore);
-        PushToDatabase(score);
+        CompareWithDatabase(score);
     }
     private void PushToDatabase(Score score)
     {
@@ -23,22 +23,22 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log("score pushed");
         })
-        .Catch(err=>{Debug.Log("score pushed err"+err.Message);});
+        .Catch(err=>{Debug.Log("score push err"+err.Message);});
     }
-    // private void CompareWithDatabase(Score score)
-    // {
-    //     RestClient.Get<Score>("https://demineur-3d-default-rtdb.europe-west1.firebasedatabase.app/"+DifficultyGrid.difficulty+"/"+pseudoField.text+".json").Then(response =>
-    //     {
-    //         if (score.time<response.time)
-    //         {
-    //             Debug.Log("score pushed");
-    //             PushToDatabase(score);
-    //         }
-    //         return;
-    //     }).Catch(err=>{
-    //         Debug.Log("score pushed err");
-    //         PushToDatabase(score);
-    //     });
-    // }
+
+    private void CompareWithDatabase(Score score)
+    {
+        RestClient.Get<Score>("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+score.level+"/"+score.pseudo+".json").Then(response =>
+        {
+            if (score.totalScore<response.totalScore) // if the score is better (aka lower) than the one in the database we push it
+            {
+                PushToDatabase(score);
+            }
+            return;
+        }).Catch(err=>{
+            Debug.Log("Score not compared : "+err.Message);
+            PushToDatabase(score);
+        });
+    }
 
 }
