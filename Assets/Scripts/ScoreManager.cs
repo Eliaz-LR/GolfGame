@@ -41,4 +41,18 @@ public class ScoreManager : MonoBehaviour
         });
     }
 
+    public void GetScores(string level)
+    {
+        RestClient.Get<Dictionary<string,Score>>("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+level+".json").Then(response =>
+        {
+            Debug.Log("Scores retrieved");
+            foreach (KeyValuePair<string,Score> entry in response)
+            {
+                Debug.Log(entry.Key+" "+entry.Value.totalScore);
+            }
+        }).Catch(err=>{
+            Debug.Log("Scores not retrieved : "+err.Message);
+        });
+    }
+
 }
