@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Proyecto26;
+using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,16 +8,17 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake(){
         instance = this;
+        Debug.Log("ScoreManager Awake");
     }
 
-    public void SaveScore(Score score)
+    public void SaveScore(Score score, string pseudo, string level)
     {
-        Debug.Log(score.pseudo+" "+score.level+" "+score.totalScore);
-        CompareWithDatabase(score);
+        Debug.Log(pseudo+" "+level+" "+score.totalScore);
+        CompareWithDatabase(score, pseudo, level);
     }
-    private void PushToDatabase(Score score)
+    private void PushToDatabase(Score score, string pseudo, string level)
     {
-        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+score.level+"/"+score.pseudo+".json", score)
+        RestClient.Put("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+level+"/"+pseudo+".json", score)
         .Then(response =>
         {
             Debug.Log("score pushed");
@@ -26,33 +26,18 @@ public class ScoreManager : MonoBehaviour
         .Catch(err=>{Debug.Log("score push err"+err.Message);});
     }
 
-    private void CompareWithDatabase(Score score)
+    private void CompareWithDatabase(Score score, string pseudo, string level)
     {
-        RestClient.Get<Score>("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+score.level+"/"+score.pseudo+".json").Then(response =>
+        RestClient.Get<Score>("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+level+"/"+pseudo+".json").Then(response =>
         {
             if (score.totalScore<response.totalScore) // if the score is better (aka lower) than the one in the database we push it
             {
-                PushToDatabase(score);
+                PushToDatabase(score, pseudo, level);
             }
             return;
         }).Catch(err=>{
             Debug.Log("Score not compared : "+err.Message);
-            PushToDatabase(score);
+            PushToDatabase(score, pseudo, level);
         });
     }
-
-    public void GetScores(string level)
-    {
-        RestClient.Get<Dictionary<string,Score>>("https://golfgame-8ff30-default-rtdb.europe-west1.firebasedatabase.app/score/"+level+".json").Then(response =>
-        {
-            Debug.Log("Scores retrieved");
-            foreach (KeyValuePair<string,Score> entry in response)
-            {
-                Debug.Log(entry.Key+" "+entry.Value.totalScore);
-            }
-        }).Catch(err=>{
-            Debug.Log("Scores not retrieved : "+err.Message);
-        });
-    }
-
 }

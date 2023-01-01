@@ -33,7 +33,7 @@ public class Finished : MonoBehaviour
 
     private void SaveScore()
     {
-        Score score = new Score(GameManager.instance.score, pseudoField.text, "Level_Grass");
-        ScoreManager.instance.SaveScore(score);
+        Score score = new Score(GameManager.instance.score);
+        ScoreManager.instance.SaveScore(score, pseudoField.text, "Level_Grass");
     }
 }
