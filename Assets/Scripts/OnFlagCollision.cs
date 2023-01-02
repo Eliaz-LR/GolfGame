@@ -8,11 +8,14 @@ public class OnFlagCollision : MonoBehaviour
     private GameObject FinishedScreen;
     private GameManager gameManager;
 
+    public AudioSource audioHole;
+
     private void Start()
     {
         gameManager = GameManager.instance;
         golfball = GameObject.Find("Golfball");
         FinishedScreen = FindObject(GameObject.Find("Canvas"), "Finished Screen");
+        audioHole = GetComponent<AudioSource>();
     }
 
     private bool isLastHole()
@@ -39,7 +42,7 @@ public class OnFlagCollision : MonoBehaviour
                 golfball.transform.rotation = Quaternion.identity;
                 golfball.transform.position = gameManager.ballPos[gameManager.hole];
             }
-
+            audioHole.Play();
         }
     }
 

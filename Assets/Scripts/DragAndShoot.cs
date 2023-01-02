@@ -24,10 +24,13 @@ public class DragAndShoot : MonoBehaviour
     [SerializeField] GameObject freeLookCamera;
     private Cinemachine.CinemachineFreeLook freeLookComponent;
 
+    public AudioSource audioShoot;
+
     private void Start()
     {
         mainCamera = Camera.main;
         freeLookComponent = freeLookCamera.GetComponent<Cinemachine.CinemachineFreeLook>();
+        audioShoot = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -105,8 +108,10 @@ public class DragAndShoot : MonoBehaviour
     }
 
     private void Shoot(Vector3 direction) {
+        audioShoot.Play();
         lastPos = transform.position;
         rb.AddForce(direction * power, ForceMode.Impulse);
         GameManager.instance.addStrike();
     }
+
 }
