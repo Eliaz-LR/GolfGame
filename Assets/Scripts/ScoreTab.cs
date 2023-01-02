@@ -7,7 +7,7 @@ public class ScoreTab : MonoBehaviour
 {
     public GameObject scoreText;
 
-    private void Awake(){
+    private void OnEnable(){
         string score = "";
         for (int i = 0; i < GameManager.instance.score.Length; i++){
             score += GameManager.instance.score[i].ToString();
