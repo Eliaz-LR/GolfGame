@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject tabUI;
 
     // Update is called once per frame
     void Update()
@@ -19,6 +20,12 @@ public class PauseMenu : MonoBehaviour
             {
                Pause(); 
             }
+        }
+        if(Input.GetKey(KeyCode.Tab)){
+            tabUI.SetActive(true);
+        }
+        else {
+            tabUI.SetActive(false);
         }
     }
 
