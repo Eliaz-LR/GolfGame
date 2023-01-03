@@ -7,7 +7,8 @@ public class DragAndShoot : MonoBehaviour
     [SerializeField] private float power = 10f;
     [SerializeField] private float maxMagnitude = 10f;
     [SerializeField] private float minMagnitude = 0.5f;
-    [SerializeField] private float speedCamera = 10f;
+    [SerializeField] private float speedCamera = 5f;
+    [SerializeField] private float deadZone = 10f;
 
     public Rigidbody rb;
     public LineRenderer lineRenderer; 
@@ -95,7 +96,7 @@ public class DragAndShoot : MonoBehaviour
         Quaternion rotationCamera = mainCamera.transform.rotation;
         Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
         float angle = AngleDifference(rotationCamera.eulerAngles.y, rotation.eulerAngles.y);
-        if (!(angle < 5 && angle > -5))
+        if (!(angle < deadZone && angle > -deadZone))
         {
             freeLookComponent.m_XAxis.Value = (angle*speedCamera)/360f;
         }
