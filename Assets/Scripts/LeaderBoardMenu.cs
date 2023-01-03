@@ -53,7 +53,7 @@ public class LeaderBoardMenu : MonoBehaviour
         {
             Transform entryTransform = Instantiate(entryTemplate, transform);
             RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-            entryRectTransform.anchoredPosition = new Vector2(0, -50 * rank -50);
+            entryRectTransform.anchoredPosition = new Vector2(0, -50 * rank -70);
             entryTransform.Find("Position").GetComponent<TextMeshProUGUI>().text = rank.ToString();
             entryTransform.Find("Name").GetComponent<TextMeshProUGUI>().text = highscore.Key;
             entryTransform.Find("Score").GetComponent<TextMeshProUGUI>().text = highscore.Value.ToString();
