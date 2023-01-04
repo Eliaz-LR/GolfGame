@@ -8,7 +8,7 @@ public class OnFlagCollision : MonoBehaviour
     private GameObject FinishedScreen;
     private GameManager gameManager;
 
-    public AudioSource audio;
+    public new AudioSource audio;
     public AudioClip audioHole;
 
     public AudioClip audioWin;

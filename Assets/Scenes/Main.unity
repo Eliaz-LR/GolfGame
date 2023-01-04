@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &56917104
 Transform:
   m_ObjectHideFlags: 0
@@ -1436,17 +1436,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254962269}
-  m_LocalRotation: {x: 0, y: 0.953717, z: -0, w: -0.30070576}
-  m_LocalPosition: {x: 0, y: 0, z: 2.583}
+  m_LocalRotation: {x: -0, y: 0.953717, z: -0, w: -0.30070576}
+  m_LocalPosition: {x: 0, y: 0, z: 2.135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 944568671}
-  m_RootOrder: 4
+  m_Father: {fileID: 537734460}
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 215, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1081.7892, y: -539.58655}
+  m_AnchoredPosition: {x: -121.724, y: 0.592}
   m_SizeDelta: {x: 2.3266, y: 0.9714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254962271
@@ -1469,7 +1469,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Un seul chemin est bon, a vous de trouver!!
+  m_text: '3 paths, only one is the correct one, make a guess :)
+
+    hint : look
+    at the flags'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3702,6 +3705,7 @@ Transform:
   - {fileID: 987431076}
   - {fileID: 1717290349}
   - {fileID: 940637345}
+  - {fileID: 254962270}
   m_Father: {fileID: 1170837182}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5672,11 +5676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -5720,7 +5724,6 @@ RectTransform:
   - {fileID: 186119795}
   - {fileID: 1869178814}
   - {fileID: 1480952727}
-  - {fileID: 254962270}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
