@@ -1,4 +1,10 @@
 # GolfGame
+
+Made by :
+- **Eliaz LE RICHE**
+- **William LE GAVRIAN**
+- **Lucas THOMAS**
+
 Features :
 - 3D Game
 - Pretty good physics and graphics
